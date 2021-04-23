@@ -22,12 +22,13 @@ Route::get('/teams/{team}', [TeamsController::class, 'show'])->name('team');
 
 Route::get('/players/{player}', [PlayersController::class, 'show'])->name('player');
 
-Route::get('/register', [AuthController::class, 'getRegisterForm']);
 
-Route::post('/register', [AuthController::class, 'register']);
 
-Route::post('/logout', [AuthController::class, 'logout']);
+Route::group(['middleware' => 'guest'], function () {
+    Route::get('/register', [AuthController::class, 'getRegisterForm']);
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::get('/login', [AuthController::class, 'getLoginForm']);
+    Route::post('/login', [AuthController::class, 'login']);
+});
 
-Route::get('/login', [AuthController::class, 'getLoginForm']);
-
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->middleware(('auth'));
