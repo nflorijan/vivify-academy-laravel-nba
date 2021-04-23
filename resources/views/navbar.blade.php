@@ -1,7 +1,7 @@
 <nav class="navbar navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">
-      Nba teams
+      NBA Teams
     </a>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
