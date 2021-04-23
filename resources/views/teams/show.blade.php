@@ -33,5 +33,17 @@
         <p>This team has no comments</p>
     @endforelse
   </li>
+  @auth
+    <form method="POST" action="/teams/{{ $team->id }}/comments" class="w-50 mt-3">
+        @csrf
+        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+        <input type="hidden" name="team_id" value="{{ $team->id }}">
+        <div class=" form-group mt-3">
+            <textarea rows="3" class="form-control" id="content" name="content"
+                placeholder="Comment..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+  @endauth
 @endsection
 

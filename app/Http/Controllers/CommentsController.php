@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use App\Models\Team;
+use App\Http\Requests\CreateCommentRequest;
+
 
 class CommentsController extends Controller
 {
@@ -34,9 +37,12 @@ class CommentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Team $team, CreateCommentRequest $request)
     {
-        
+        $data = $request->validated();
+        $data['user_id'] = auth()->id();
+        $team->comments()->create($data);
+        return redirect("/teams/$team->id");
     }
 
     /**
