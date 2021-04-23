@@ -7,6 +7,25 @@
       <li class="nav-item">
         <a class="nav-link" href="/">All teams</a>
       </li>
+      @if (!auth()->check())
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Sign in</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/register">Sign up</a>
+        </li>
+      @endif
+      @if (auth()->check())
+        <li class="nav-item">
+          <strong> Username: {{ auth()->user()->name }} </strong>
+        </li>
+        <li class="nav-item">
+          <form action="/logout" method="POST">
+            @csrf
+            <button class="btn btn-primary">Log out</button>
+          </form>
+        </li>
+      @endif
     </ul>
   </div>
 </nav>

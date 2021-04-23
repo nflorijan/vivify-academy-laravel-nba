@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\PlayersController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,13 @@ Route::get('/', [TeamsController::class, 'index']);
 Route::get('/teams/{team}', [TeamsController::class, 'show'])->name('team');
 
 Route::get('/players/{player}', [PlayersController::class, 'show'])->name('player');
+
+Route::get('/register', [AuthController::class, 'getRegisterForm']);
+
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::post('/logout', [AuthController::class, 'logout']);
+
+Route::get('/login', [AuthController::class, 'getLoginForm']);
+
+Route::post('/login', [AuthController::class, 'login']);
