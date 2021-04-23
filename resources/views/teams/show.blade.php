@@ -18,8 +18,20 @@
         </a>
       </li>
       @empty
-      <span>No Players</span>
+      <span>his team has no players</span>
     @endforelse
   </ul>
+
+  <h4>Comments</h4>
+  <ul class="list-group list-group-flush">
+    @forelse ($team->comments as $comment)
+      <li class="list-group-item">
+        <p><strong>Comment:</strong> {{ $comment->content }} <span>{{ $comment->created_at }}</span></p>
+        <p><strong>Author:</strong> {{ $comment->user->name }}</p>
+      </li>
+    @empty
+        <p>This team has no comments</p>
+    @endforelse
+  </li>
 @endsection
 

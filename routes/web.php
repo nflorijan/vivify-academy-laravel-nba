@@ -22,8 +22,6 @@ Route::get('/teams/{team}', [TeamsController::class, 'show'])->name('team');
 
 Route::get('/players/{player}', [PlayersController::class, 'show'])->name('player');
 
-
-
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', [AuthController::class, 'getRegisterForm']);
     Route::post('/register', [AuthController::class, 'register']);

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Team;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
-class TeamsController extends Controller
+class CommentsController extends Controller
 {
-
     
     /**
      * Display a listing of the resource.
@@ -16,8 +15,7 @@ class TeamsController extends Controller
      */
     public function index()
     {
-        $teams = Team::get();
-        return view('teams.index', compact('teams'));
+        //
     }
 
     /**
@@ -38,27 +36,27 @@ class TeamsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Team  $team
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show(Team $team)
+    public function show(Comment $comment)
     {
-        return view('teams.show', compact('team'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Team  $team
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Team $team)
+    public function edit(Comment $comment)
     {
         //
     }
@@ -67,10 +65,10 @@ class TeamsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Team  $team
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Team $team)
+    public function update(Request $request, Comment $comment)
     {
         //
     }
@@ -78,10 +76,10 @@ class TeamsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Team  $team
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Team $team)
+    public function destroy(Comment $comment)
     {
         //
     }
