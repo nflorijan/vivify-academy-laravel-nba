@@ -26,7 +26,8 @@
   <ul class="list-group list-group-flush">
     @forelse ($team->comments as $comment)
       <li class="list-group-item">
-        <p><strong>Comment:</strong> {{ $comment->content }} <span>{{ $comment->created_at }}</span></p>
+        <p><strong>Comment:</strong> {{ $comment->content }}</p>
+        <p><strong>Created at:</strong> {{ $comment->created_at }}</p>
         <p><strong>Author:</strong> {{ $comment->user->name }}</p>
       </li>
     @empty
