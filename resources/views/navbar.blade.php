@@ -7,6 +7,9 @@
       <li class="nav-item">
         <a class="nav-link" href="/">All teams</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/news">News</a>
+      </li>
       @if (!auth()->check())
         <li class="nav-item">
           <a class="nav-link" href="/login">Sign in</a>

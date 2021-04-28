@@ -5,6 +5,7 @@ use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\PlayersController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,5 +32,8 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/login', [AuthController::class, 'getLoginForm']);
     Route::post('/login', [AuthController::class, 'login']);
 });
+
+Route::get('/news', [NewsController::class, 'index']);
+Route::get('/news/{news}', [NewsController::class, 'show'])->name('news');
 
 Route::post('/logout', [AuthController::class, 'logout'])->middleware(('auth'));
