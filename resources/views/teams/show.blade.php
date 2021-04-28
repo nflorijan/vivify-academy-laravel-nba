@@ -22,6 +22,19 @@
     @endforelse
   </ul>
 
+  <div>
+    <h3>News:</h3>
+    <ul class="list-group list-group-flush">
+        @forelse ($team->news as $singleNews)
+            <li class="list-group-item">
+                <a href="{{ route('news', ['news' => $singleNews->id]) }}">{{ $singleNews->title }}</a>
+            @empty
+                <p>No news for this team</p>
+            </li>
+        @endforelse
+    </ul>
+    </div>
+
   <h4>Comments</h4>
   <ul class="list-group list-group-flush">
     @forelse ($team->comments as $comment)
