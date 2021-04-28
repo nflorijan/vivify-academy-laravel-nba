@@ -6,7 +6,8 @@ use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\Team;
 use App\Http\Requests\CreateCommentRequest;
-
+use App\Mail\CommentReceived;
+use Illuminate\Support\Facades\Mail;
 
 class CommentsController extends Controller
 {
@@ -14,7 +15,7 @@ class CommentsController extends Controller
     {
         $this->middleware('forbidden-comment')->only('store');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -45,7 +46,9 @@ class CommentsController extends Controller
     {
         $data = $request->validated();
         $data['user_id'] = auth()->id();
-        $team->comments()->create($data);
+        $comment = $team->comments()->create($data);
+
+        Mail::to($team->email)->queue(new CommentReceived($team, $comment));
         return redirect("/teams/$team->id");
     }
 
